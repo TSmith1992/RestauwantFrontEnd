@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+##### To Dos
+
+-Add restaurant fetcher component, exactly like jobs fetcher
+-Add job form component
+-Add job creator component for hiring side
+-New job page component, similar to JobListPage.js
+-Dashboard component, similar to JobListPage.js
+-Basic home page, applying ? or hiring ?
+-Bootstrap link https://getbootstrap.com/docs/5.1/examples/
+-Add borough to JobCard
+-Add pricing to JobCard
+-Add resturant type to JobCard
+-Add pay to JobCard ($/hr)
+-Add job title to JobCard FROM Job.name
+-Add desire start date
+-Add LinkedIn link for user
+-Add some fake login process (front end) (user: 123, pw: 456)
