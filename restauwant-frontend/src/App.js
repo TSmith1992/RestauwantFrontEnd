@@ -4,8 +4,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar isLoggedIn={false} />
-        <hr />
+        <Navbar isLoggedIn={true} />
         <Switch>
           <Route exact path="/">
             Home

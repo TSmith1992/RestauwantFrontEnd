@@ -1,5 +1,6 @@
 import { addDecorator } from "@storybook/react";
 import { MemoryRouter } from "react-router";
+import "bootstrap/dist/css/bootstrap.css";
 
 addDecorator((story) => (
   <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
