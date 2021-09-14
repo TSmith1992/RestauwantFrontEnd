@@ -7,9 +7,13 @@ export default {
 };
 
 const Template = (args) => <JobList {...args} />;
+export const Loading = Template.bind({});
+Loading.args = {
+  jobs: [], loading: true}
 
 export const Renders = Template.bind({});
 Renders.args = {
+    loading: false,
   jobs: [{
     "id": 1,
     "restaurant_id": 90,

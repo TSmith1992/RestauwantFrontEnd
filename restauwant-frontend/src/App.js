@@ -1,16 +1,17 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
+import { JobListPage } from "./pages/JobListPage";
 function App() {
   return (
     <Router>
-      <div>
-        <Navbar isLoggedIn={true} />
+      <Navbar isLoggedIn={true} />
+      <div className="container">
         <Switch>
           <Route exact path="/">
             Home
           </Route>
           <Route exact path="/jobs">
-            Jobs
+            <JobListPage />
           </Route>
           <Route exact path="/jobs/new">
             New Job
