@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 
-export function Navbar({ hideLinks }) {
+export function Navbar({ hideLinks, newUser }) {
   return (
     <div className="container">
       <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -9,7 +9,7 @@ export function Navbar({ hideLinks }) {
           to="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span className="fs-4">RestauWant</span>
+          <span className="fs-4">RestauWant {newUser.full_name? `Happy Hunting, ${newUser.full_name}!`: "Please login/register to get started!"}</span>
         </NavLink>
 
         <ul className="nav nav-pills">
