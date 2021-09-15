@@ -1,7 +1,7 @@
 import React from "react";
 import { JobCard } from "./JobCard";
 
-export function JobList({ jobs, loading }) {
+export function JobList({ jobs, loading, onClickApply, applyLoading }) {
   if (loading) {
     return (
       <div className="d-flex justify-content-center py-5">
@@ -16,7 +16,13 @@ export function JobList({ jobs, loading }) {
       {jobs.map((job) => {
         return (
           <div className="col" key={job.id}>
-            <JobCard job={job} />
+            <JobCard
+              loading={applyLoading}
+              job={job}
+              onClickApply={() => {
+                onClickApply(job.id);
+              }}
+            />
           </div>
         );
       })}

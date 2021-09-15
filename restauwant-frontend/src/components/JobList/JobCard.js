@@ -20,9 +20,11 @@ const mapPriceToLabel = {
   1: "$",
   2: "$$",
   3: "$$$",
+  4: "$$$$",
+  5: "$$$$$",
 };
 
-export function JobCard({ job }) {
+export function JobCard({ job, loading, onClickApply }) {
   const location = mapBoroughToLabel[job.restaurant.borough_location];
   return (
     <div className="card card-body">
@@ -36,6 +38,13 @@ export function JobCard({ job }) {
       <p className="card-text">{location}</p>
       <p className="card-text">{job.restaurant.restaurant_type}</p>
       <p className="card-text">${job.pay} / hr</p>
+      <button
+        className="btn btn-primary btn-block"
+        disabled={loading}
+        onClick={() => onClickApply()}
+      >
+        Apply
+      </button>
     </div>
   );
 }
