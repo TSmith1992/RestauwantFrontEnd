@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 
-export function Navbar({ isLoggedIn }) {
+export function Navbar({ hideLinks }) {
   return (
     <div className="container">
       <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -13,7 +13,7 @@ export function Navbar({ isLoggedIn }) {
         </NavLink>
 
         <ul className="nav nav-pills">
-          {isLoggedIn === true && (
+          {!hideLinks && (
             <React.Fragment>
               <li className="nav-item">
                 <NavLink
@@ -46,7 +46,7 @@ export function Navbar({ isLoggedIn }) {
               </li>
             </React.Fragment>
           )}
-          {isLoggedIn === false && (
+          {hideLinks === true && (
             <React.Fragment>
               <li className="nav-item">
                 <NavLink
@@ -55,15 +55,6 @@ export function Navbar({ isLoggedIn }) {
                   to="/login"
                 >
                   Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/register"
-                >
-                  Register
                 </NavLink>
               </li>
             </React.Fragment>

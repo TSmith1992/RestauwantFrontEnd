@@ -1,24 +1,22 @@
 import React from "react";
 
-export function RegistrationForm() {
+export function RegistrationForm({onAddNewUser, handleSubmit}) {
   return (
-    <form className="add-profile-form">
+    <form className="add-profile-form" onSubmit={handleSubmit}>
       <h1>Register here!</h1>
       <input
         type="text"
-        name="userName"
+        name="full_name"
         placeholder="Please enter your full name"
-        //   defaultValue={player.name}
-        //   onChange={onAddNewUser}
+        onChange={onAddNewUser}
         className="login-field"
       />
       <br />
       <input
         type="text"
-        name="phoneNumber"
+        name="phone_number"
         placeholder="Please enter your phone number"
-        //   defaultValue={player.image}
-        //   onChange={onAddNewUser}
+        onChange={onAddNewUser}
         className="login-field"
       />
       <br />
@@ -26,8 +24,7 @@ export function RegistrationForm() {
         type="text"
         name="email"
         placeholder="Please enter your email"
-        //   defaultValue={player.image}
-        //   onChange={onAddNewUser}
+        onChange={onAddNewUser}
         className="login-field"
       />
       <br />
@@ -35,33 +32,29 @@ export function RegistrationForm() {
         type="text"
         name="description"
         placeholder="Write a little about yourself!"
-        //   defaultValue={player.image}
-        //   onChange={onAddNewUser}
+        onChange={onAddNewUser}
         className="login-field"
       />
       <br />
       <input
         type="text"
-        name="profilePic"
+        name="profile_pic"
         placeholder="Give us a photo of yourself!"
-        //   defaultValue={player.image}
-        //   onChange={onAddNewUser}
+        onChange={onAddNewUser}
         className="login-field"
       />
       <br />
       <input
         type="text"
-        name="linkedIn"
+        name="linkedin_link"
         placeholder="Please enter your linkedIn address"
-        //   defaultValue={player.image}
-        //   onChange={onAddNewUser}
+        onChange={onAddNewUser}
         className="login-field"
       />
       <br />
       <input
         type="submit"
         name="submit"
-        //   value={loginButton}
         className="submit"
         id="login-button"
       />
