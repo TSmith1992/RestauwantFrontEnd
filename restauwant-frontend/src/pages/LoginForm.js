@@ -1,31 +1,28 @@
 import React from "react";
 
-export function LoginForm() {
+export function LoginForm({onUserLogin, handleLoginSubmit}) {
   return (
-    <form>
+    <form onSubmit={handleLoginSubmit}>
       <h1>Login</h1>
       <input
         type="text"
-        name="userName"
+        name="full_name"
         placeholder="Please enter your full name"
-        //   defaultValue={player.name}
-        //   onChange={onAddNewUser}
+        onChange={onUserLogin}
         className="login-field"
       />
       <br />
       <input
         type="text"
-        name="phoneNumber"
+        name="phone_number"
         placeholder="Please enter your phone number"
-        //   defaultValue={player.image}
-        //   onChange={onAddNewUser}
+        onChange={onUserLogin}
         className="login-field"
       />
       <br />
       <input
         type="submit"
         name="submit"
-        //   value={loginButton}
         className="submit"
         id="login-button"
       />
