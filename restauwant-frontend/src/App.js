@@ -5,7 +5,16 @@ import { JobListPage } from "./pages/JobListPage";
 import { LoginTree } from "./pages/LoginTree"
 
 function App() {
-  const [isLoggedIn, setIsLogged] =useState(true)
+  //state variable for adding new user.
+  const [newUser, setNewUser] =useState({
+    hiringcheck_id: 2,
+    full_name:"",
+    phone_number:"",
+    email:"",
+    description:"",
+    profile_pic:"",
+    linkedin_link:""
+  })
 
   function handleLogin(e){}
   return (
