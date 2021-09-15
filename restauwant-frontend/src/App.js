@@ -1,11 +1,16 @@
-import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { useState } from "react";
 import { Navbar } from "./components/Navbar/Navbar";
 import { JobListPage } from "./pages/JobListPage";
 import { LoginTree } from "./pages/LoginTree";
 
 function App() {
-  const postNewUser ="http://localhost:9292/api/users"
+  const postNewUser = "http://localhost:9292/api/users";
 
   //state variable for adding new user.
   const [newUser, setNewUser] = useState({
@@ -19,37 +24,42 @@ function App() {
   });
 
   //state variable to flag if the user logged in or registered
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState({
+    full_name: localStorage.user_fullname,
+    phone_number: localStorage.user_phonenumber,
+  });
 
   //state variable to hide links unless someone is logged in/register
-  const [hideLinks, setHideLinks] = useState(true);
+  // const [hideLinks, setHideLinks] = useState();
+  const hideLinks = !(user.full_name && user.phone_number);
 
   //state variable to handle logins
   const [userLogin, setUserLogin] = useState({
-    full_name: "", 
-    phone_number: ""
-  })
+    full_name: "",
+    phone_number: "",
+  });
 
   //function to change login state variable
-  function onUserLogin(e){
+  function onUserLogin(e) {
     let name = e.target.name;
     let value = e.target.value;
-    setUserLogin({ ...userLogin, [name]: value }) 
+    setUserLogin({ ...userLogin, [name]: value });
   }
 
   //function to check user login and send data to backend
-  function handleLoginSubmit(e){
+  function handleLoginSubmit(e) {
     e.preventDefault();
-    setUser(userLogin) 
-    if(!userLogin.full_name || !userLogin.phone_number){
-      alert("Please complete all fields to log in!")
-    } 
-    else{
+    setUser(userLogin);
+    if (!userLogin.full_name || !userLogin.phone_number) {
+      alert("Please complete all fields to log in!");
+    } else {
+      localStorage.user_fullname = userLogin.full_name;
+      localStorage.user_phonenumber = userLogin.phone_number;
       fetch(`http://localhost:9292/api/users/${userLogin.full_name}`)
-      .then(r => r.json())
-      .then(data=>console.log(data))
-      setHideLinks(!hideLinks)
-      return <Redirect to='/jobs' />
+        .then((r) => r.json())
+        .then((data) => console.log(data));
+
+      return <Redirect to="/jobs" />;
     }
   }
 
@@ -72,22 +82,24 @@ function App() {
     ) {
       alert("Please complete all fields to register!");
     } else {
-      fetch(postNewUser,{
+      fetch(postNewUser, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newUser)
-      })
-      setHideLinks(!hideLinks)
-      setUser(newUser) 
-      alert("Happy Hunting! Your name and phone number will be your Username and Password here, so remember those!")
+        body: JSON.stringify(newUser),
+      });
+
+      setUser(newUser);
+      alert(
+        "Happy Hunting! Your name and phone number will be your Username and Password here, so remember those!"
+      );
     }
   }
 
   return (
     <Router>
-      <Navbar hideLinks={hideLinks} user={user}/>
+      <Navbar hideLinks={hideLinks} user={user} />
       <div className="container">
         {hideLinks ? (
           <Switch>
