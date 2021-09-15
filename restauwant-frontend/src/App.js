@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { JobListPage } from "./pages/JobListPage";
 import { LoginTree } from "./pages/LoginTree";
 import {Restaurants} from "./pages/Restaurants"
+import {NewJob} from "./pages/NewJob"
 
 function App() {
   const postNewUser ="http://localhost:9292/api/users"
@@ -111,7 +112,7 @@ function App() {
               <JobListPage />
             </Route>
             <Route exact path="/jobs/new">
-              New Job
+              New Job <NewJob />
             </Route>
             <Route exact path="/restaurants">
               My Restaurants <Restaurants user={user}/>
