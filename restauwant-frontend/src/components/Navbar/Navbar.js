@@ -20,6 +20,16 @@ export function Navbar({ hideLinks, user }) {
                   exact
                   className="nav-link"
                   activeClassName="active"
+                  to="/restaurants"
+                >
+                  My Restaurants
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  className="nav-link"
+                  activeClassName="active"
                   to="/jobs"
                 >
                   Jobs
