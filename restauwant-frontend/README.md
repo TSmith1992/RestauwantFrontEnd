@@ -85,4 +85,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Add job title to JobCard FROM Job.name
 -Add desire start date
 -Add LinkedIn link for user
--Add some fake login process (front end) (user: 123, pw: 456)
