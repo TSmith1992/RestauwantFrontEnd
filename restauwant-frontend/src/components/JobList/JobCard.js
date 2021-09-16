@@ -47,7 +47,7 @@ export function JobCard({ job, loading, onClickApply }) {
         </span>
       </p>
       <button
-        className="btn btn-success btn-block"
+        className="btn btn-outline-success btn-block"
         disabled={loading}
         onClick={() => onClickApply()}
       >
