@@ -1,13 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
 export function JobApplicant({ user }) {
-  const mapNameToJobTitle = {
-    1: "Chef",
-    2: "Manager",
-    3: "Bartender",
-    4: "Server",
-    5: "Busser",
-  };  
+  // const [hired, setHired] = useState(false)
+
+  function onButtonClick(e){
+    alert(`Great! We will let ${user.full_name} know! You can also give them a call at ${user.phone_number} or email them at ${user.email}!`)
+  }
 return (
     <div className="card card-body">
       <h2 className="card-text">{user.full_name}</h2>
@@ -21,7 +19,7 @@ return (
       <p className="card-text">{user.email}</p>
       <p className="card-text">{user.description}</p>
       <p className="card-text">{user.linkedin_link}</p>
-      <button>Click here to hire!</button>
+      <button onClick={onButtonClick}>Click here to hire!</button>
     </div>
   );
 }

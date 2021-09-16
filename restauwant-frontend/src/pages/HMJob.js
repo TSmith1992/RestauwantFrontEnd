@@ -22,7 +22,7 @@ return (
       <p className="card-text"><strong>${job.pay}/hr</strong></p>
       <p className="card-text">{job.description}</p>
       <p className="card-text">The hiring manager is hoping for the employee to start on {job.desired_start_date}</p>
-      <>{job.userjob.user.map((user) => {
+      <>{job.users.map((user) => {
         return (
           <div className="col" key={user.id}>
             <JobApplicant user={user} />
