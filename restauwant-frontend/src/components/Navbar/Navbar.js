@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-export function Navbar({ hideLinks, user }) {
+export function Navbar({ hideLinks, user = {} }) {
   const history = useHistory();
   return (
     <div className="container">
