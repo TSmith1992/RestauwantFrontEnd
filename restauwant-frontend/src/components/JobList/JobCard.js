@@ -28,18 +28,26 @@ export function JobCard({ job, loading, onClickApply }) {
   const location = mapBoroughToLabel[job.restaurant.borough_location];
   return (
     <div className="card card-body">
-      <h5 className="card-text">{job.restaurant.name}</h5>
+      <div className="d-flex align-items-center justify-content-between">
+        <h5 className="card-text">{job.restaurant.name}</h5>
+        <p className="card-text text-success">
+          {mapPriceToLabel[job.restaurant.price_range]}
+        </p>
+      </div>
       <p className="card-text">
-        {mapNameToJobTitle[job.name]} - {job.job_type}
+        {location} - {job.restaurant.restaurant_type}
       </p>
-      <p className="card-text text-success">
-        {mapPriceToLabel[job.restaurant.price_range]}
+      <p className="card-text d-flex align-items-center">
+        <span className="badge rounded-pill bg-success mr-2 ">
+          ${job.pay} / hr
+        </span>
+        <span className="mx-2">
+          {" "}
+          {mapNameToJobTitle[job.name]} - {job.job_type}{" "}
+        </span>
       </p>
-      <p className="card-text">{location}</p>
-      <p className="card-text">{job.restaurant.restaurant_type}</p>
-      <p className="card-text">${job.pay} / hr</p>
       <button
-        className="btn btn-primary btn-block"
+        className="btn btn-success btn-block"
         disabled={loading}
         onClick={() => onClickApply()}
       >
