@@ -9,9 +9,7 @@ export function Restaurants({ user }) {
   useEffect(() => {
     fetch(`/api/users/${user.full_name}`)
       .then((r) => r.json())
-      .then((r) => {
-        setRestaurants(r.restaurants);
-      });
+      .then((r) => setRestaurants(r.restaurants));
   }, []);
 
   return (
