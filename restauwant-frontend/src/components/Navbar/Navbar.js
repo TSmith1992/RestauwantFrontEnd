@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 export function Navbar({ hideLinks, user }) {
+  const history = useHistory();
   return (
     <div className="container">
       <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -9,7 +11,12 @@ export function Navbar({ hideLinks, user }) {
           to="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span className="fs-4">RestauWant {user.full_name? `Hi there, ${user.full_name}!`: "Please login/register to get started!"}</span>
+          <span className="fs-4">
+            RestauWant{" "}
+            {user.full_name
+              ? `Hi there, ${user.full_name}!`
+              : "Please login/register to get started!"}
+          </span>
         </NavLink>
 
         <ul className="nav nav-pills">
@@ -53,6 +60,22 @@ export function Navbar({ hideLinks, user }) {
                 >
                   Dashboard
                 </NavLink>
+              </li>
+              <li className="nav-item">
+                <a
+                  href="#logout"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    delete localStorage.user_fullname;
+                    delete localStorage.user_phonenumber;
+                    history.push("/login");
+                    window.location.reload();
+                  }}
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  Logout
+                </a>
               </li>
             </React.Fragment>
           )}

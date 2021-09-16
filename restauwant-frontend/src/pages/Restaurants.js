@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { RestaurantCard } from "./RestaurantCard"
+import { RestaurantCard } from "./RestaurantCard";
 
 export function Restaurants({ user }) {
   //state variable for restaurants
   const [restaurants, setRestaurants] = useState([]);
-
+  console.log(user);
   //function to render restaurant card
   useEffect(() => {
     fetch(`/api/users/${user.full_name}`)

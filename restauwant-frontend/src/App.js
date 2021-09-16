@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import { Navbar } from "./components/Navbar/Navbar";
 import { JobListPage } from "./pages/JobListPage";
@@ -62,7 +57,7 @@ function App() {
         .then((r) => r.json())
         .then((data) => console.log(data));
 
-      return <Redirect to="/jobs" />;
+      window.location.assign("/jobs");
     }
   }
 
