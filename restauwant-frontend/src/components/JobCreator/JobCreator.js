@@ -8,6 +8,9 @@ export function JobCreator({ children }) {
     setLoading(true);
     fetch(`/api/jobs`, {
       method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(job),
     })
       .then((res) => res.json())

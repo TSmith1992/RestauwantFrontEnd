@@ -8,9 +8,9 @@ import { useState } from "react";
 import { Navbar } from "./components/Navbar/Navbar";
 import { JobListPage } from "./pages/JobListPage";
 import { LoginTree } from "./pages/LoginTree";
-import {Restaurants} from "./pages/Restaurants"
-import {NewJob} from "./pages/NewJob"
-import {HMDashboard} from "./pages/HMDashboard"
+import { Restaurants } from "./pages/Restaurants";
+import { NewJob } from "./pages/NewJob";
+import { HMDashboard } from "./pages/HMDashboard";
 
 function App() {
   const postNewUser = "http://localhost:9292/api/users";
@@ -125,12 +125,14 @@ function App() {
               <JobListPage />
             </Route>
             <Route exact path="/jobs/new">
-              New Job <NewJob />
+              <NewJob />
             </Route>
             <Route exact path="/restaurants">
-              My Restaurants <Restaurants user={user}/>
+              <Restaurants user={user} />
             </Route>
-            <Route path="/dashboard">Dashboard <HMDashboard user={user}/></Route>
+            <Route path="/dashboard">
+              <HMDashboard user={user} />
+            </Route>
           </Switch>
         )}
       </div>

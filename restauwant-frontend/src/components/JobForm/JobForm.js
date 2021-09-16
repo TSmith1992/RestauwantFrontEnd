@@ -14,9 +14,10 @@ export function JobForm({ loading, restaurants, onSubmit }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        onSubmit(newJob);
       }}
     >
-      <h1>Create a new job for a restaurant here</h1>
+      <h1>Create new job posting</h1>
       <div className="mb-3">
         <label>Restaurant</label>
         <select
@@ -27,6 +28,7 @@ export function JobForm({ loading, restaurants, onSubmit }) {
             });
           }}
           disabled={loading}
+          required
           placeholder="Please select the restaurant"
           className="form-control"
         >
@@ -45,8 +47,9 @@ export function JobForm({ loading, restaurants, onSubmit }) {
             });
           }}
           disabled={loading}
+          required
           type="number"
-          min={7.5}
+          min={7}
           placeholder="Please enter the amount to pay per hour"
           className="form-control"
         />
@@ -61,6 +64,7 @@ export function JobForm({ loading, restaurants, onSubmit }) {
             });
           }}
           disabled={loading}
+          required
           placeholder="Please select the job type"
           className="form-control"
         >
@@ -81,6 +85,7 @@ export function JobForm({ loading, restaurants, onSubmit }) {
             });
           }}
           disabled={loading}
+          required
           placeholder="Please select the job type"
           className="form-control"
         >
@@ -102,6 +107,7 @@ export function JobForm({ loading, restaurants, onSubmit }) {
             });
           }}
           disabled={loading}
+          required
           type="text"
           placeholder="Please enter the job description"
           className="form-control"
@@ -117,6 +123,7 @@ export function JobForm({ loading, restaurants, onSubmit }) {
             });
           }}
           disabled={loading}
+          required
           type="date"
           placeholder="Please enter the Start Date"
           className="form-control"
