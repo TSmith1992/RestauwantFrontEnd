@@ -2,38 +2,53 @@ import React, { useState } from "react";
 
 export function NewJob() {
   //API to post new job
-  const postNewJob ="http://localhost:9292/api/jobs"
+  const postNewJob = "http://localhost:9292/api/jobs";
 
   //state variable to hide successful posting unless someone is logged in/register
   const [hideSuccess, setHideSuccess] = useState(true);
 
   //array to have a random job type assigned to new job
-  const jobType = ["Internship", "Contract", "Temporary", "Part-time", "Full-time", "Commission"]
+  const jobType = [
+    "Internship",
+    "Contract",
+    "Temporary",
+    "Part-time",
+    "Full-time",
+    "Commission",
+  ];
 
   //array to have a random job type assigned to new job
-  const jobDescription = ["National", "Central", "Chief", "Global", "Customer", "International", "Principal"]
+  const jobDescription = [
+    "National",
+    "Central",
+    "Chief",
+    "Global",
+    "Customer",
+    "International",
+    "Principal",
+  ];
 
   const [newJob, setNewJob] = useState({
-    restaurant_id: getRandomInt(1,91),
-    name: getRandomInt(1,6),
+    restaurant_id: getRandomInt(1, 91),
+    name: getRandomInt(1, 6),
     job_type: Math.floor(Math.random() * jobType.length),
     pay: 0,
     description: Math.floor(Math.random() * jobDescription.length),
-    desired_start_date: new Date()
+    desired_start_date: new Date(),
   });
 
   //function to create random numbers for posting job to jobs table
-  function getRandomInt(min, max){
+  function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min)
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
   //function to change newJob state variable
-  function onCreateJob(e){
+  function onCreateJob(e) {
     let name = e.target.name;
     let value = e.target.value;
-    setNewJob({ ...newJob, [name]: value }) 
+    setNewJob({ ...newJob, [name]: value });
   }
 
   //function to POST new registered user to database and unhide NavBar buttons
@@ -45,32 +60,62 @@ export function NewJob() {
     ) {
       alert("Please complete all fields to post the job!");
     } else {
-      fetch(postNewJob,{
+      fetch(postNewJob, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newJob)
-      })
-      setHideSuccess(!hideSuccess)
-      setNewJob(newJob)
+        body: JSON.stringify(newJob),
+      });
+      setHideSuccess(!hideSuccess);
+      setNewJob(newJob);
       fetch(`/api/restaurants/${newJob.restaurant_id}`)
-      .then(r => r.json())
-      .then(data => alert(`Success! You have successfully posted a job for ${data.name}! The job pay is ${newJob.pay} per hour! Check your DASHBOARD to see who's applied!` ))
+        .then((r) => r.json())
+        .then((data) =>
+          alert(
+            `Success! You have successfully posted a job for ${data.name}! The job pay is ${newJob.pay} per hour! Check your DASHBOARD to see who's applied!`
+          )
+        );
     }
   }
 
   return (
-    <form 
-    onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <h1>Create a new job for a restaurant here</h1>
       <input
         type="text"
         name="pay"
         placeholder="Please enter the amount to pay per hour"
         onChange={onCreateJob}
-        className="login-field"
+        className="form-control"
+      />
+      <input
+        type="text"
+        name="job type"
+        placeholder="Please enter the job type"
+        onChange={onCreateJob}
+        className="form-control"
+      />
+      <input
+        type="text"
+        name="job description"
+        placeholder="Please enter the job description"
+        onChange={onCreateJob}
+        className="form-control"
+      />
+      <input
+        type="text"
+        name="start date"
+        placeholder="Please enter the desired start date"
+        onChange={onCreateJob}
+        className="form-control"
+      />
+      <input
+        type="text"
+        name="price range"
+        placeholder="Please enter the price range"
+        onChange={onCreateJob}
+        className="form-control"
       />
       <br />
       {/* <input
@@ -81,7 +126,9 @@ export function NewJob() {
         className="login-field"
       />
       <br /> */}
-      <input type="submit" name="submit" className="submit" id="login-button" />
+      <button type="submit" className="btn btn-primary">
+        Create Job Posting
+      </button>
     </form>
   );
 }

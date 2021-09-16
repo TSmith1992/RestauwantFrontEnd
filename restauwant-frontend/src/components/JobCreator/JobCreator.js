@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 
-// // // //
-//used to apply to new job
-export function UserJobCreator({ children }) {
+//used to create to new job
+export function JobCreator({ children }) {
   const [loading, setLoading] = useState(false);
 
-  function createUserJob(jobID) {
+  function createJob(job) {
     setLoading(true);
-    fetch(`/api/jobs/${jobID}/apply`, {
+    fetch(`/api/jobs`, {
       method: "post",
-      body: JSON.stringify({}),
+      body: JSON.stringify(job),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -25,7 +24,7 @@ export function UserJobCreator({ children }) {
     <React.Fragment>
       {children({
         loading,
-        createUserJob,
+        createJob,
       })}
     </React.Fragment>
   );
