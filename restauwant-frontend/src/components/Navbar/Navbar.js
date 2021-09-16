@@ -11,13 +11,11 @@ export function Navbar({ hideLinks, user = {} }) {
           to="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span className="fs-4">
-            RestauWant{" "}
-            {user.full_name
-              ? `Hi there, ${user.full_name}!`
-              : "Please login/register to get started!"}
-          </span>
+          <span className="fs-4">RestauWant </span>
         </NavLink>
+        {user.full_name
+          ? `Hi there, ${user.full_name}!`
+          : "Please login/register to get started!"}
 
         <ul className="nav nav-pills">
           {!hideLinks && (
