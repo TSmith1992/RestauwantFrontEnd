@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 //used to create to new job
 export function JobCreator({ children }) {
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
 
   function createJob(job) {
@@ -17,6 +19,7 @@ export function JobCreator({ children }) {
       .then((data) => {
         console.log(data);
         setLoading(false);
+        history.push("/jobs");
       })
       .catch(() => {
         setLoading(false);
