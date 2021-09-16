@@ -4,8 +4,6 @@ export function NewJob() {
   //API to post new job
   const postNewJob ="http://localhost:9292/api/jobs"
 
-  const getRestaurantWithJob ="http://localhost:9292"
-
   //state variable to hide successful posting unless someone is logged in/register
   const [hideSuccess, setHideSuccess] = useState(true);
 
@@ -42,6 +40,7 @@ export function NewJob() {
   function handleSubmit(e) {
     e.preventDefault();
     if (
+      // eslint-disable-next-line eqeqeq
       newJob.pay == 0
     ) {
       alert("Please complete all fields to post the job!");
