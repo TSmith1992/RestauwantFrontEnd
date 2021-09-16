@@ -7,16 +7,17 @@ export function Navbar({ hideLinks, user = {} }) {
   return (
     <div className="container">
       <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <NavLink
-          to="/"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
-        >
-          <span className="fs-4">RestauWant </span>
-        </NavLink>
-        {user.full_name
-          ? `Hi there, ${user.full_name}!`
-          : "Please login/register to get started!"}
-
+        <div className="d-flex align-items-center justify-content-between flex-grow w-100">
+          <NavLink
+            to="/"
+            className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+          >
+            <span className="fs-4">RestauWant </span>
+          </NavLink>
+          {user.full_name
+            ? `Hi there, ${user.full_name}!`
+            : "Please login/register to get started!"}
+        </div>
         <ul className="nav nav-pills">
           {!hideLinks && (
             <React.Fragment>
