@@ -1,6 +1,7 @@
 import React from "react";
 import { Loading } from "../components/Loading";
 import { UserJobsFetcher } from "../components/UserJobsFetcher/UserJobsFetcher";
+import { UserJobDeleter } from "../components/UserJobDeleter/UserJobDeleter";
 
 const mapNameToJobTitle = {
   1: "Chef",
@@ -26,7 +27,7 @@ const mapPriceToLabel = {
   5: "$$$$$",
 };
 
-export function JobCard({ job }) {
+export function JobCard({ job, loading, onClickDelete }) {
   const location = mapBoroughToLabel[job.restaurant.borough_location];
   return (
     <div className="card card-body">
@@ -48,6 +49,13 @@ export function JobCard({ job }) {
           {mapNameToJobTitle[job.name]} - {job.job_type}{" "}
         </span>
       </p>
+      <button
+        className="btn btn-outline-danger btn-block"
+        disabled={loading}
+        onClick={() => onClickDelete()}
+      >
+        Delete Job Application
+      </button>
     </div>
   );
 }
@@ -63,15 +71,25 @@ export function MyJobs({ user }) {
           return <h3>No job applications found</h3>;
         }
         return (
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            {userJobs.map((userjob) => {
-              return (
-                <div className="col" key={userjob.id}>
-                  <JobCard job={userjob.job} />
-                </div>
-              );
-            })}
-          </div>
+          <UserJobDeleter>
+            {({ loading: deleting, deleteUserJob }) => (
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                {userJobs.map((userjob) => {
+                  return (
+                    <div className="col" key={userjob.id}>
+                      <JobCard
+                        job={userjob.job}
+                        loading={deleting}
+                        onClickDelete={() => {
+                          deleteUserJob(userjob.id);
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </UserJobDeleter>
         );
       }}
     </UserJobsFetcher>
