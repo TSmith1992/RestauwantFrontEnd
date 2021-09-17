@@ -43,7 +43,7 @@ export function RestaurantCard({ restaurant }) {
           {mapPriceToLabel[restaurant.price_range]}
         </p>
         <p className="card-text">
-          There are {restaurant.jobs.length} open positions for this restaurant
+          There {restaurant.jobs.length===1? "is": "are"} {restaurant.jobs.length} {restaurant.jobs.length===1? "open position": "open positions"} for this restaurant.
         </p>
       </div>
     </div>

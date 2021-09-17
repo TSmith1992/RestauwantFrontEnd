@@ -31,6 +31,7 @@ export function Navbar({ hideLinks, user = {} }) {
                   My Restaurants
                 </NavLink>
               </li>
+          
               <li className="nav-item">
                 <NavLink
                   exact
@@ -48,7 +49,7 @@ export function Navbar({ hideLinks, user = {} }) {
                   activeClassName="active"
                   to="/jobs/new"
                 >
-                  New Job
+                  Create New Job
                 </NavLink>
               </li>
               <li className="nav-item">

@@ -116,12 +116,13 @@ function App() {
             <Route exact path="/">
               Home
             </Route>
-            <Route exact path="/jobs">
-              <JobListPage />
+           <Route exact path="/jobs">
+              <JobListPage user={user}/>
             </Route>
+            {user.full_name==="Tye S."||"Chris K."||"Shivang D."||"Dakota M."?
             <Route exact path="/jobs/new">
               <NewJob />
-            </Route>
+            </Route>:""}
             <Route exact path="/restaurants">
               <Restaurants user={user} />
             </Route>
