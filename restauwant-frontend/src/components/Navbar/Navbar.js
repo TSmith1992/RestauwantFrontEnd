@@ -31,7 +31,7 @@ export function Navbar({ hideLinks, user = {} }) {
                   My Restaurants
                 </NavLink>
               </li>
-          
+
               <li className="nav-item">
                 <NavLink
                   exact
@@ -59,6 +59,15 @@ export function Navbar({ hideLinks, user = {} }) {
                   to="/dashboard"
                 >
                   Dashboard
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/my-jobs"
+                >
+                  My Jobs
                 </NavLink>
               </li>
               <li className="nav-item">

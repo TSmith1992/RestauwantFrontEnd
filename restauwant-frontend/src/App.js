@@ -6,6 +6,7 @@ import { LoginTree } from "./pages/LoginTree";
 import { Restaurants } from "./pages/Restaurants";
 import { NewJob } from "./pages/NewJob";
 import { HMDashboard } from "./pages/HMDashboard";
+import { MyJobs } from "./pages/MyJobs";
 
 function App() {
   const postNewUser = "http://localhost:9292/api/users";
@@ -116,18 +117,27 @@ function App() {
             <Route exact path="/">
               Home
             </Route>
-           <Route exact path="/jobs">
-              <JobListPage user={user}/>
+            <Route exact path="/jobs">
+              <JobListPage user={user} />
             </Route>
-            {user.full_name==="Tye S."||"Chris K."||"Shivang D."||"Dakota M."?
-            <Route exact path="/jobs/new">
-              <NewJob />
-            </Route>:""}
+            {user.full_name === "Tye S." ||
+            "Chris K." ||
+            "Shivang D." ||
+            "Dakota M." ? (
+              <Route exact path="/jobs/new">
+                <NewJob />
+              </Route>
+            ) : (
+              ""
+            )}
             <Route exact path="/restaurants">
               <Restaurants user={user} />
             </Route>
             <Route path="/dashboard">
               <HMDashboard user={user} />
+            </Route>
+            <Route path="/my-jobs">
+              <MyJobs user={user} />
             </Route>
           </Switch>
         )}

@@ -2,7 +2,7 @@ import React from "react";
 import { Loading } from "../Loading";
 import { JobCard } from "./JobCard";
 
-export function JobList({ jobs, loading, onClickApply, applyLoading }) {
+export function JobList({ jobs, loading, onClickApply, applyLoading, user }) {
   if (loading) {
     return <Loading />;
   }
@@ -15,7 +15,7 @@ export function JobList({ jobs, loading, onClickApply, applyLoading }) {
               loading={applyLoading}
               job={job}
               onClickApply={() => {
-                onClickApply(job.id);
+                onClickApply(job.id, user);
               }}
             />
           </div>
