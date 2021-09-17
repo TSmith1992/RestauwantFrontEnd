@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 // // // //
 //used to apply to new job
-export function UserJobCreator({ children }) {
+export function UserJobCreator({ children, user }) {
   const [loading, setLoading] = useState(false);
 
-  function createUserJob(jobID) {
+  function createUserJob(jobID, user) {
     setLoading(true);
     fetch(`/api/jobs/${jobID}/apply`, {
       method: "post",
